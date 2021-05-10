@@ -1,9 +1,13 @@
+net\codejava\repositories\TrianguloRepository.class
+net\codejava\entity\Triangulo.class
 net\codejava\services\ProductService.class
 net\codejava\entity\Product.class
+net\codejava\services\TrianguloSerivce.class
 net\codejava\entity\Usuario.class
 net\codejava\Usuario.class
 net\codejava\controller\AppController.class
 net\codejava\SQLDialect.class
+net\codejava\entity\Calculo.class
 net\codejava\services\UserService.class
 net\codejava\AppMain.class
 net\codejava\repositories\ProductRepository.class

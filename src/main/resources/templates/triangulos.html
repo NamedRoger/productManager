@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <div align="center">
+            <h1>Triangulos List</h1>
+            <a href="triangulos/add">Calcular</a>
+            <br/><br/>
+            <table border="1" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>Triangulo ID</th>
+                        <th>Base</th>
+                        <th>Altura</th>
+                        <th>Area</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="triangulo : ${triangulos}">
+                        <td th:text="${triangulo.id}">Triangulo ID</td>
+                        <td th:text="${triangulo.base}">Base</td>
+                        <td th:text="${triangulo.altura}">Altura</td>                       
+                        <td th:text="${triangulo.area}">Area</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+    </body>
+</html>

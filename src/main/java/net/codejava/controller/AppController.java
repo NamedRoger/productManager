@@ -8,6 +8,8 @@ import net.codejava.services.ProductService;
 import net.codejava.Usuario;
 import net.codejava.entity.Calculo;
 import net.codejava.entity.Product;
+import net.codejava.entity.Triangulo;
+import net.codejava.services.TrianguloService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +26,9 @@ public class AppController {
 
     @Autowired
     private ProductService service;
+    
+    @Autowired
+    private TrianguloService trianguloService;
 
     @RequestMapping("/")
     public String viewHomePage(HttpSession session, Model model) {
@@ -64,6 +69,29 @@ public class AppController {
 
         // model.addAttribute("listProducts", listProducts);
         return "redirect:/";
+    }
+    
+    @RequestMapping("/triangulos")
+    public String viewTriangulos(Model model){
+        List<Triangulo> triangulos = trianguloService.listAll();
+        model.addAttribute("triangulos",triangulos);
+        return "/triangulos";
+    }
+    
+    @RequestMapping("/triangulos/add")
+    public String viewTriangulosAdd(Model model){
+        Triangulo triangulo = new Triangulo();
+        model.addAttribute("triangulo",triangulo);
+        return "/add_triangulo";
+    }
+
+    
+    @RequestMapping(value = "/triangulos/add", method = RequestMethod.POST)
+    public String newTriangulo(@ModelAttribute("triangulo") Triangulo triangulo) {
+        double area = (triangulo.getAltura()*triangulo.getBase()) / 2;
+        triangulo.setArea(area);
+        trianguloService.save(triangulo);
+        return "redirect:/triangulos";
     }
 
     @RequestMapping("/new")
